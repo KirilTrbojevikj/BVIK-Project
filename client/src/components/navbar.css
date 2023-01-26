@@ -27,9 +27,6 @@ body {
     color: black;
 }
 
-.nav-elements {
-}
-
 .nav-elements ul {
   display: flex;
   justify-content: space-between;
