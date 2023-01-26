@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Navbar } from './components';
-import { Home } from './pages';
+import { CreateCase, DetailsCase, Home, Profile } from './pages';
 
 const App = () => {
   return (
@@ -13,6 +13,9 @@ const App = () => {
 
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/create-case' element={<CreateCase />} />
+          <Route path='/details/:id' element={<DetailsCase />} />
         </Routes>
       </div>
 
