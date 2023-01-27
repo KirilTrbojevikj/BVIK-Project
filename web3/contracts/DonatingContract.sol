@@ -10,7 +10,6 @@ contract DonatingContract {
         uint256 target;
         uint256 deadline;
         uint256 amountCollected;
-        string image;
         address[] donators;
         uint256[] donations;
     }
@@ -19,7 +18,7 @@ contract DonatingContract {
 
     uint256 public numberOfHealthCases = 0;
 
-    function createHealthCase(address _owner, string memory _title, string memory _description, uint256 _target, uint256 _deadline, string memory _image) public returns (uint256) {
+    function createHealthCase(address _owner, string memory _title, string memory _description, uint256 _target, uint256 _deadline) public returns (uint256) {
         HealthCase storage healthCase = healthCases[numberOfHealthCases];
 
         require(healthCase.deadline < block.timestamp, "The deadline should be a date in the future.");
@@ -30,7 +29,7 @@ contract DonatingContract {
         healthCase.target = _target;
         healthCase.deadline = _deadline;
         healthCase.amountCollected = 0;
-        healthCase.image = _image;
+        
 
         numberOfHealthCases++;
 

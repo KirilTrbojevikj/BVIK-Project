@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
-
+import { useStateContext } from '../context'
 import { CustomButton, FormField } from '../components';
 
 const CreateCase = () => {
 
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { createHealthCase} = useStateContext();
   const [form, setForm] = useState({
     name: '',
     title: '',
@@ -21,8 +22,11 @@ const CreateCase = () => {
     setForm({ ...form, [fieldName]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await createHealthCase({...form, target: ethers.utils.parseUnits(form.target, 18)})
+    navigate('/');
 
 
     console.log(form);

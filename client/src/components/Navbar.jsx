@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useStateContext } from '../context';
 import './navbar.css';
 
 import { CustomButton } from './';
@@ -10,8 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isActive, serIsActive] = useState('dashboard');
   const [toggleDrawer, setToggleDrawer] = useState(false);
-
-  const address = '0xabc'
+  const { connect, address } = useStateContext();
 
   return (
     <nav className="navbar">

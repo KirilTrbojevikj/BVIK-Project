@@ -3,7 +3,7 @@ import { ReactDOM } from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-
+import { StateContextProvider } from "./context";
 import App from "./App";
 import "./styles/globals.css";
 
@@ -16,7 +16,10 @@ root.render(
 
   <ThirdwebProvider desiredChainId={activeChainId}>
     <Router>
-      <App />
+      <StateContextProvider>
+        <App />
+      </StateContextProvider>
+
     </Router>
 
   </ThirdwebProvider>
