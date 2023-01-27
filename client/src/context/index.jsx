@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-    const { contract } = useContract('0x0e6904461e8a441d4Ffc5e946fB3f85b6950a264');
+    const { contract } = useContract('0xEfd2C4548841D0DB47b4AdfA11Dd379C8e418877');
 
     const { mutateAsync: createHealthCase } = useContractWrite(contract, 'createHealthCase');
 
