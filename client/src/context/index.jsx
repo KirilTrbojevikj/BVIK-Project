@@ -30,6 +30,35 @@ export const StateContextProvider = ({ children }) => {
         }
     }
 
+
+    const getCases = async () => {
+
+        const healthCases = await contract.call('getHealthCases');
+
+        const parsedHealthCases = healthCases.map((healthCase, i) =>
+        ({
+            owner: healthCase.owner,
+            title: healthCase.title,
+            description: healthCase.description,
+            target: ethers.utils.formatEther(healthCase.target.toString()),
+            deadline: healthCase.deadline.toNumber(),
+            amountCollected: ethers.utils.formatEther(healthCase.amountCollected.toString()),
+            pId: i
+
+        }));
+
+        return parsedHealthCases;
+    }
+
+    const getUserHealthCases = async () => {
+
+        const allHealthCases = await getCases();
+
+        const filterCases = allHealthCases.filter((healthCase) => healthCase.owner === address);
+
+        return filterCases;
+    }
+
     return (
         <StateContext.Provider
             value={{
@@ -37,6 +66,8 @@ export const StateContextProvider = ({ children }) => {
                 contract,
                 connect,
                 createHealthCase: publishCase,
+                getCases,
+                getUserHealthCases,
             }}
         >
             {children}

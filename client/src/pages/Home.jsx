@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useStateContext } from '../context';
+import { DisplayHealthCases } from '../components';
 
 const Home = () => {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [healthCases, setHealthCases] = useState([]);
+
+  const { address, contract, getCases } = useStateContext();
+
+  const fetchHealthCases = async () => {
+    setIsLoading(true);
+    const data = await getCases();
+    setHealthCases(data);
+    setIsLoading(false);
+
+  }
+
+  useEffect(() => {
+    if (contract) fetchHealthCases();
+  }, [address, contract]);
+
   return (
-    <div>Home</div>
+    <DisplayHealthCases 
+      title="All health cases"
+      isLoading={isLoading}
+      healthCases={healthCases}
+    
+    />
   )
 }
 
