@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { useStateContext } from '../context'
 import { CustomButton, FormField } from '../components';
+import "./form.css";
 
 const CreateCase = () => {
 
@@ -34,7 +35,7 @@ const CreateCase = () => {
   }
 
   return (
-    <div>
+    <div class="form-container">
       <div>
         <h1>Start donations for a health case</h1>
       </div>

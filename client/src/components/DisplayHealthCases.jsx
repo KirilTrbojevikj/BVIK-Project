@@ -14,7 +14,7 @@ const DisplayHealthCases = ({ title, isLoading, healthCases }) => {
 
     return (
         <div>
-            <h1>{title} ({healthCases.length})</h1>
+            <h1 class="m">{title} ({healthCases.length})</h1>
 
             <div class="card-container">
                 {!isLoading && healthCases.length > 0 && healthCases.map(

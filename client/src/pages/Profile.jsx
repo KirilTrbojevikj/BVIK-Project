@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useStateContext } from '../context';
 import { DisplayHealthCases } from '../components';
+import "./form.css";
 
 const Profile = () => {
 

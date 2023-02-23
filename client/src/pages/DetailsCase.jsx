@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import { useStateContext } from '../context';
 import { CustomButton, CountBox } from '../components';
 import { calculateBarPercentage, daysLeft } from '../utils';
+import "./form.css";
 
 
 
@@ -39,7 +40,7 @@ const DetailsCase = () => {
 
 
   return (
-    <div>
+    <div class="form-container">
       {isLoading && 'Loading...'}
 
       <div>
