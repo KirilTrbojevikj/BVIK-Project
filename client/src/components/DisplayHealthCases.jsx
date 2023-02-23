@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomCard from './CustomCard';
+import "./card.css";
 
 
 const DisplayHealthCases = ({ title, isLoading, healthCases }) => {
@@ -15,7 +16,7 @@ const DisplayHealthCases = ({ title, isLoading, healthCases }) => {
         <div>
             <h1>{title} ({healthCases.length})</h1>
 
-            <div>
+            <div class="card-container">
                 {!isLoading && healthCases.length > 0 && healthCases.map(
                     (healthCase) => <CustomCard
                         key={healthCase.id}
